@@ -8,6 +8,10 @@
 ## Non-goals
 - All-in-one solution for link shortening
   - This includes: link expiry, passwords, etc.
+- Deduplication
+
+I may write a smarter more feature-complete version, but this is
+all I need as of right now 😄
 
 ## Building
 You can build this project with `cargo build`.
