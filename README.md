@@ -4,6 +4,7 @@
 ## Goals
 - Provide a simple, low-latency API to shorten links (using `rocket` crate)
 - Minimal configuration set-up (using `dotenv` crate)
+- Basic authentication
 
 ## Non-goals
 - All-in-one solution for link shortening
@@ -23,9 +24,9 @@ configuration, and run using `cargo run --release`.
 You can build this project with `cargo build`.
 
 ## To-do
-- [ ] API key to prevent unauthorized use
+- [x] API key to prevent unauthorized use
 - [ ] Write some tests
-- [ ] Refactor into nicer modules
+- [x] Refactor into nicer modules
 
 ## License
 ![AGPL logo](https://www.gnu.org/graphics/agplv3-155x51.png "GNU Affero General Public License")

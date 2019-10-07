@@ -3,26 +3,12 @@
 #[macro_use] extern crate rocket;
 extern crate dotenv;
 
-/*
-use std::fs::{File, write};
-use std::io::Read;
-use std::path::{Path, PathBuf};
-use rocket::response::Redirect;
-use rocket::response::status;
-use rocket::request::Form;
-use rocket::http::uri::Uri;
-use rocket::http::Status;
-*/
-
-use dotenv::dotenv;
 use std::env;
+use dotenv::dotenv;
 
-// modules
 pub mod utils;
 pub mod auth;
 mod routes;
-
-// entry point
 
 fn main() {
     dotenv().expect("Failed to read .env file");
