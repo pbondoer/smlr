@@ -1,9 +1,9 @@
-use std::fs::{File};
+use rocket::http::Status;
+use rocket::response::Redirect;
+use std::env;
+use std::fs::File;
 use std::io::Read;
 use std::path::{Path, PathBuf};
-use std::env;
-use rocket::response::Redirect;
-use rocket::http::Status;
 
 #[get("/<file..>")]
 pub fn redirect(file: PathBuf) -> Result<Redirect, Status> {
@@ -12,9 +12,9 @@ pub fn redirect(file: PathBuf) -> Result<Redirect, Status> {
             let mut s = String::new();
             match f.read_to_string(&mut s) {
                 Ok(_) => Ok(Redirect::to(s)),
-                _ => Err(Status::InternalServerError)
+                _ => Err(Status::InternalServerError),
             }
-        },
+        }
         _ => Err(Status::NotFound),
     }
 }

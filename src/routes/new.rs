@@ -1,14 +1,14 @@
-use std::fs::write;
-use std::path::{Path};
-use std::env;
 use rocket::http::uri::Uri;
 use rocket::http::Status;
-use rocket::response::status;
 use rocket::request::Form;
+use rocket::response::status;
+use std::env;
+use std::fs::write;
+use std::path::Path;
 
-use crate::utils;
-use crate::auth::ApiKey;
 use super::error::error;
+use crate::auth::ApiKey;
+use crate::utils;
 
 #[derive(FromForm)]
 pub struct TNew {
@@ -22,7 +22,10 @@ pub fn new(form: Form<TNew>, _key: ApiKey) -> Result<String, status::Custom<&'st
         Ok(uri) => {
             // make sure this is an absolute URI
             if uri.absolute().is_none() {
-                return Err(status::Custom(Status::BadRequest, "Please use absolute URIs only"));
+                return Err(status::Custom(
+                    Status::BadRequest,
+                    "Please use absolute URIs only",
+                ));
             }
 
             // find a suitable path
@@ -39,9 +42,9 @@ pub fn new(form: Form<TNew>, _key: ApiKey) -> Result<String, status::Custom<&'st
 
             match write(path, uri.to_string()) {
                 Ok(_) => Ok(format!("{}{}", env::var("SMLR_PREFIX").unwrap(), name)),
-                _ => Err(status::Custom(Status::InternalServerError, error()))
+                _ => Err(status::Custom(Status::InternalServerError, error())),
             }
-        },
-        _ => Err(status::Custom(Status::BadRequest, "Invalid URI"))
+        }
+        _ => Err(status::Custom(Status::BadRequest, "Invalid URI")),
     }
 }

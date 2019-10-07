@@ -1,7 +1,7 @@
-use std::env;
-use rocket::Outcome;
 use rocket::http::Status;
-use rocket::request::{self, Request, FromRequest};
+use rocket::request::{self, FromRequest, Request};
+use rocket::Outcome;
+use std::env;
 
 // Based on https://api.rocket.rs/v0.4/rocket/request/trait.FromRequest.html#example-1
 
