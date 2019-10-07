@@ -19,7 +19,7 @@ fn main() {
         vec!["SMLR_DB_PATH", "SMLR_PREFIX", "SMLR_API_KEY"]
             .iter()
             .for_each(|var| {
-                env::var(var).expect(&format!("Please provide {}", var));
+                env::var(var).unwrap_or_else(|_| panic!("Please provide {}", var));
             });
     }
 
