@@ -2,8 +2,8 @@
 > A tiny URL shortener written in Rust
 
 ## Goals
-- Provide a simple, low-latency API to shorten links
-- Minimal configuration set-up
+- Provide a simple, low-latency API to shorten links (using `rocket` crate)
+- Minimal configuration set-up (using `dotenv` crate)
 
 ## Non-goals
 - All-in-one solution for link shortening
@@ -16,15 +16,16 @@ all I need as of right now 😄
 ## Running
 You can run this project with `cargo run`.
 
-For production use, make sure to create a `Rocket.toml` configuration,
-and run the mode you would like to use: `ROCKET_ENV=prod cargo run`.
+For production use, make sure to create a `Rocket.toml` and `.env`
+configuration, and run using `cargo run --release`.
 
 ## Building
 You can build this project with `cargo build`.
 
 ## To-do
-- Write some tests
-- Refactor into nicer modules
+- [ ] API key to prevent unauthorized use
+- [ ] Write some tests
+- [ ] Refactor into nicer modules
 
 ## License
 ![AGPL logo](https://www.gnu.org/graphics/agplv3-155x51.png "GNU Affero General Public License")
